@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Pizzeria</string>
+    <string name="nombre">Lucía García</string>
+    <string name="correo">ejemplo@algo.com</string>
+    <string name="tfno">654 215 236</string>
+    <string name="pizza1">Romana</string>
+    <string name="pizza2">Barbacoa</string>
+    <string name="pizza3">Margarita</string>
+    <string name="bebida1">Agua</string>
+    <string name="bebida2">Cola</string>
+    <string name="bebida3">Sin bebida</string>
+    <string name="opcion_pina">Con piña</string>
+    <string name="opcion_sin_pina">Sin piña</string>
+    <string name="opcion_vegana">Vegana</string>
+    <string name="opcion_champi">Con Champiñones</string>
+    <string name="opcion_sin_champi">Sin Champiñones</string>
+    <string name="opcion_pollo">Carne de Pollo</string>
+    <string name="opcion_cerdo">Carne de Cerdo</string>
+    <string name="opcion_ternera">Carne de Ternera</string>
+    <string name="titulo_realizar_pedido">Realizar Pedido</string>
+    <string name="btn_cambiar">Cambiar</string>
+    <string name="txt_seleccionar_pizza">Selecciona tu pizza:</string>
+    <string name="txt_seleccionar_bebida">Selecciona tu bebida</string>
+    <string name="txt_precio_total">Precio total</string>
+    <string name="label_nombre">NOMBRE: </string>
+    <string name="label_correo">CORREO: </string>
+    <string name="label_tfno">TFNO: </string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_aceptar">Aceptar</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="btn_ir_pago">Formulario de pago</string>
+    <string name="resumen_title">Resumen del Pedido</string>
+    <string name="label_pizza">Pizza:</string>
+    <string name="label_tamano">Tamaño:</string>
+    <string name="label_cantidad">Cantidad:</string>
+    <string name="label_opcion">Opción:</string>
+    <string name="label_total">TOTAL:</string>
+    <string name="pago_form_title">Formulario de Pago</string>
+    <string name="label_seleccionar_tarjeta">Selecciona el tipo de tarjeta:</string>
+    <string name="label_num_tarjeta">Número de Tarjeta</string>
+    <string name="label_fecha_cad">Fecha Caducidad (MM/AA)</string>
+    <string name="label_cvc">CVC</string>
+    <string name="cant_pagar">Cantidad a Pagar</string>
+    <string name="tipo_tarj">Tipo de Tarjeta</string>
+    <string name="tarjeta_visa" translatable="false">VISA</string>
+    <string name="tarjeta_mastercard" translatable="false">MasterCard</string>
+    <string name="tarjeta_euro6000" translatable="false">Euro 6000</string>
+    <string name="pago_resumen_title">Resumen del Pago</string>
+    <string name="tarjeta_elegida">Tarjeta Elegida:</string>
+    <string name="pago_exito_msg">¡Pago Procesado con Éxito!</string>
+    <string name="label_cliente">Cliente</string>
+    <string name="label_fecha_hora">Fecha y Hora</string>
+    <string name="label_metodo">Método</string>
+    <string name="label_tarjeta_cuenta">Tarjeta/Cuenta</string>
+    <string name="label_total_pagado">TOTAL PAGADO:</string>
+    <string name="email_asunto_justificante">Justificante de pago</string>
+    <string name="mensaje_pago_realizado">Pago realizado</string>
+    <string name="label_cantidad_bebidas">Cantidad de bebida</string>
+    <string name="label_seleccionar_tamano">Elige Tamaño</string>
+    <string name="tamano_pequena">Pequeña</string>
+    <string name="tamano_mediana">Mediana</string>
+    <string name="tamano_grande">Grande</string>
+    <string name="hacer_pedido">Hacer Pedido</string>
+    <string name="ver_pedidos">Ver Pedidos</string>
+    <string name="btn_cerrar">Cerrar</string>
+</resources>

@@ -1,5 +1,6 @@
 package com.example.pizzeria
 
+import androidx.compose.foundation.background
 import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -21,12 +22,14 @@ import com.example.pizzeria.ui.theme.primaryLight
 fun HacerPedido(
     viewModel: PizzeriaViewModel = viewModel(),
     modifier: Modifier = Modifier
+
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var pizzaSeleccionada by remember { mutableStateOf("") }
     var Pizzaexpandedida by remember { mutableStateOf(false) }
 
-    Box(modifier = modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()
+        .background(color = Color(0xFFFDFD96))) {
 
             Text(
                 "Total: ${"%.2f".format(uiState.precioTotal)} €",
@@ -174,6 +177,7 @@ fun HacerPedido(
             fontFamily = MiFuenteFamilia,
             style = MaterialTheme.typography.titleMedium)
         Spacer(Modifier.height(8.dp))
+
         Row {
         Precios.bebidas.forEach { b ->
             val isSelected = uiState.bebidaSeleccionada == b.nombre
@@ -191,11 +195,19 @@ fun HacerPedido(
                 if( b.nombre == "Sin bebida")
                     Text(b.nombre, fontFamily = MiFuenteFamilia, color = Color.White)
                 else
-                Text(
-                    "${b.nombre} (${b.precio} €)",
-                    fontFamily = MiFuenteFamilia,
-                    color = Color.White
-                )
+             Column {
+                 Text(
+                     "${b.nombre}",
+                     fontFamily = MiFuenteFamilia,
+                     color = Color.White
+                 )
+                 Text(
+                     "(${b.precio} €)",
+                     fontFamily = MiFuenteFamilia,
+                     color = Color.White
+                 )
+
+             }
             }
         }
         }

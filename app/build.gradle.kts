@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.viewmodel)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.navigation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

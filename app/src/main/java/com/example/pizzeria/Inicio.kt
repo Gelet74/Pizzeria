@@ -1,5 +1,6 @@
 package com.example.pizzeria
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +24,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pizzeria.ui.theme.MiFuenteFamilia
 import com.example.pizzeria.ui.theme.PizzeriaTheme
+
+enum class Pantallas(@StringRes val titulo: Int) {
+    Inicio(titulo = R.string.app_name),
+    HacerPedido(titulo = R.string.hacer_pedido),
+    ResumenPedido(titulo = R.string.resumen_pedido),
+    FormularioPago(titulo = R.string.formulario_pago),
+    ResumenPago(titulo = R.string.resumen_pago)
+}
 
 
 @Composable

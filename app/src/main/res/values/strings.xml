@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pizzeria</string>
+    <string name="app_name" translatable="false">Pizzeria</string>
     <string name="nombre">Lucía García</string>
     <string name="correo">ejemplo@algo.com</string>
     <string name="tfno">654 215 236</string>
@@ -32,7 +32,7 @@
     <string name="resumen_title">Resumen del Pedido</string>
     <string name="label_pizza">Pizza:</string>
     <string name="label_tamano">Tamaño:</string>
-    <string name="label_cantidad">Cantidad:</string>
+    <string name="label_cantidad">Cantidad de pizzas</string>
     <string name="label_opcion">Opción:</string>
     <string name="label_total">TOTAL:</string>
     <string name="pago_form_title">Formulario de Pago</string>
@@ -55,7 +55,7 @@
     <string name="label_total_pagado">TOTAL PAGADO:</string>
     <string name="email_asunto_justificante">Justificante de pago</string>
     <string name="mensaje_pago_realizado">Pago realizado</string>
-    <string name="label_cantidad_bebidas">Cantidad de bebida</string>
+    <string name="label_cantidad_bebidas">Cantidad de bebidas</string>
     <string name="label_seleccionar_tamano">Elige Tamaño</string>
     <string name="tamano_pequena">Pequeña</string>
     <string name="tamano_mediana">Mediana</string>
@@ -63,4 +63,9 @@
     <string name="hacer_pedido">Hacer Pedido</string>
     <string name="ver_pedidos">Ver Pedidos</string>
     <string name="btn_cerrar">Cerrar</string>
+    <string name="btn_resumen_pedido">Resumen Pedido</string>
+    <string name="resumen_pedido">Resumen Pedido</string>
+    <string name="formulario_pago">Formulario pago</string>
+    <string name="resumen_pago">Resumen Pago</string>
+
 </resources>

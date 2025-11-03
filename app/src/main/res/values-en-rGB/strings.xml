@@ -59,6 +59,9 @@
     <string name="ver_pedidos">See orders</string>
     <string name="nombre">name</string>
     <string name="correo">email</string>
-    <string name="btn_cerrar">Close
-    </string>
+    <string name="btn_cerrar">Close</string>
+    <string name="btn_resumen_pedido">Order Summary</string>
+    <string name="resumen_pedido">Order Summary</string>
+    <string name="formulario_pago">Payment Form</string>
+    <string name="resumen_pago">Payment Summary</string>
 </resources>

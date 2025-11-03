@@ -11,7 +11,7 @@ import com.example.pizzeria.R
 
 val MiFuenteFamilia = FontFamily(
 
-    Font(R.font.pacifico_regular, FontWeight.Normal)
+    Font(R.font.inter, FontWeight.Normal)
 )
 
 

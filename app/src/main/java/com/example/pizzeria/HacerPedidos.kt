@@ -202,7 +202,7 @@ fun HacerPedido(
 
         Spacer(Modifier.height(24.dp))
 
-        Text (text = stringResource(R.string.txt_seleccionar_pizza),
+        Text (text = stringResource(R.string.label_cantidad),
             fontFamily = MiFuenteFamilia,
             style = MaterialTheme.typography.titleMedium)
         Row(
@@ -214,7 +214,7 @@ fun HacerPedido(
             Button(onClick = { viewModel.cambiarCantidadPizza(1) }) { Text("+") }
         }
             Spacer(Modifier.height(16.dp))
-            Text(text = stringResource(R.string.txt_seleccionar_bebida),
+            Text(text = stringResource(R.string.label_cantidad_bebidas),
                 fontFamily = MiFuenteFamilia,
                 style = MaterialTheme.typography.titleMedium)
             Row(
@@ -234,7 +234,7 @@ fun HacerPedido(
         ) {
             Button(onClick = { }) { Text (text = stringResource(R.string.btn_cancelar),
                                           fontFamily = MiFuenteFamilia) }
-            Button(onClick = { }) { Text(text = stringResource(R.string.btn_aceptar),
+            Button(onClick = { }) { Text(text = stringResource(R.string.btn_resumen_pedido),
                                          fontFamily = MiFuenteFamilia) }
         }
 

@@ -152,11 +152,19 @@ fun HacerPedido(
                         .weight(1F)
                         .padding(vertical = 4.dp)
                 ) {
-                    Text(
-                        "${t.nombre} (${t.precio} €)",
-                        fontFamily = MiFuenteFamilia,
-                        color = Color.White
-                    )
+                    Column {
+                        Text(
+                            "${t.nombre}",
+                            fontFamily = MiFuenteFamilia,
+                            color = Color.White
+                        )
+                        Text(
+                            "(${t.precio} €)",
+                            fontFamily = MiFuenteFamilia,
+                            color = Color.White
+                        )
+
+                    }
                 }
             }
         }

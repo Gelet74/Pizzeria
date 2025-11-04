@@ -18,9 +18,9 @@ class MainActivity : ComponentActivity() {
             PizzeriaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     //Inicio(
-                       // modifier = Modifier.padding(innerPadding)
+                    // modifier = Modifier.padding(innerPadding)
                     //)
-                    HacerPedido(
+                    PizzeriaApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

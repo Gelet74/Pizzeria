@@ -22,6 +22,12 @@ class PizzeriaViewModel : ViewModel() {
         }
         calcularPrecioTotal()
     }
+    fun seleccionarOpcionPizza(opcion: String) {
+        _uiState.update { current ->
+            current.copy(opcionSeleccionada = opcion)
+        }
+     }
+
 
     fun seleccionarTamano(tamano: String) {
         _uiState.update { current ->

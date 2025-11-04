@@ -7,6 +7,7 @@ data class PizzeriaUIState(
     val pizzaMargaritaNombre:String = "Margarita",
 
     val pizzaSeleccionada: String = "",
+    val opcionSeleccionada: String = "",
     val tamanoSeleccionado: String = "",
     val bebidaSeleccionada: String = "",
 

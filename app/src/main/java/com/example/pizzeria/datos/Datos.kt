@@ -1,5 +1,7 @@
 package com.example.pizzeria.datos
 
+import com.example.pizzeria.modelo.Pedido
+
 class Datos {
     fun cargarPedidos(): List<Pedido> {
         return listOf(
@@ -13,7 +15,6 @@ class Datos {
                 precioPizza = 0.0,
                 precioBebida = 0.0,
                 precioTotal = 0.0
-
             ),
             Pedido(
                 idpedido = 2,
@@ -50,16 +51,4 @@ class Datos {
             )
         )
     }
-
-    annotation class Pedido(
-        val idpedido: Int,
-        val pizza: String,
-        val tamanoPizza: String,
-        val bebida: String,
-        val cantidadPizza: Int,
-        val cantidadBebida: Int,
-        val precioPizza: Double,
-        val precioBebida: Double,
-        val precioTotal: Double
-    )
 }

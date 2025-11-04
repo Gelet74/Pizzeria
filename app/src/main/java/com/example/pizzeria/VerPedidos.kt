@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import com.example.pizzeria.ui.ViewModel.PizzeriaViewModel
 
 @Composable
-fun FormularioPago(viewModel: PizzeriaViewModel) {
-    Text(text = "FORMULARIO PAGO!!!")
+fun Verpedidos(viewModel: PizzeriaViewModel) {
+    Text(text = "VER PEDIDOS!!!")
 }

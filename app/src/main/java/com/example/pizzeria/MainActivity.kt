@@ -16,11 +16,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PizzeriaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    //Inicio(
-                    // modifier = Modifier.padding(innerPadding)
-                    //)
-                    PizzeriaApp(
+                Scaffold( modifier = Modifier.fillMaxSize(),
+                    containerColor = androidx.compose.ui.graphics.Color(0xFFFDFD96)
+                ) {innerPadding ->
+                   PizzeriaApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

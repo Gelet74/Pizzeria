@@ -29,13 +29,13 @@ fun Inicio(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(color = Color(0xFFFFBB30))
+            .background(color = Color(0xFFFDFD96))
     ) {
         Image(
             painter = imagen,
             contentDescription = null,
-            contentScale = ContentScale.FillBounds,
-            alpha = 0.5f,
+            contentScale = ContentScale.FillWidth,
+            alpha = 0.8f,
             modifier = Modifier.fillMaxSize()
         )
 
@@ -48,11 +48,12 @@ fun Inicio(
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp)
-                    .padding(8.dp)
+                    .height(160.dp)
+                    .padding(top = 40.dp)
+                    .padding(16.dp)
             ) {
                 Row(
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.padding(8.dp),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Column {
@@ -69,7 +70,8 @@ fun Inicio(
             }
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .padding(bottom=16.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
                 BotonSiguiente(onClick = { onBotonSiguientePulsado("Hacer Pedido") })

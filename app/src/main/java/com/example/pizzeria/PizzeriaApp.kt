@@ -24,7 +24,7 @@ import com.example.pizzeria.ui.ViewModel.PizzeriaViewModel
 // ---------- ENUM DE PANTALLAS ----------
 enum class Pantallas(@StringRes val titulo: Int) {
     Inicio(titulo = R.string.app_name),
-    HacerPedido(titulo = R.string.pantalla_HacerPedido),
+    HacerPedido(titulo = R.string.Haz_pedido),
     ResumenPedido(titulo = R.string.resumen_pedido),
     FormularioPago(titulo = R.string.formulario_pago),
     ResumenPago(titulo = R.string.resumen_pago),
@@ -88,12 +88,18 @@ fun PizzeriaApp(
                     }
                 )
             }
+            // -------- PANTALLA FORMULARIO DE PAGO--------
+            composable(Pantallas.FormularioPago.name) {
+                FormularioPago(
+                    viewModel = viewModel,
+                )
+            }
 
             // -------- PANTALLA VER PEDIDOS --------
             composable(Pantallas.VerPedidos.name) {
                 Verpedidos(
                     viewModel = viewModel,
-                    )
+                )
             }
             // -------- PANTALLA RESUMEN PEDIDO --------
             composable(Pantallas.ResumenPedido.name) {

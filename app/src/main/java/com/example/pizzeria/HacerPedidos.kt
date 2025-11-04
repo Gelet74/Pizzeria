@@ -46,7 +46,7 @@ fun HacerPedido(
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .padding(top = 16.dp)
+                .padding(top = 8.dp)
                 .padding(top = 70.dp)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -56,7 +56,7 @@ fun HacerPedido(
             Text (text= stringResource(R.string.txt_seleccionar_pizza),
                 fontFamily = MiFuenteFamilia,
                 style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(8.dp)
+            Spacer(Modifier.height(4.dp)
             )
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -98,7 +98,7 @@ fun HacerPedido(
                                 fontFamily = MiFuenteFamilia, color = Color.Black,
                                 style = MaterialTheme.typography.titleSmall
                             )
-                            Spacer(Modifier.height(8.dp))
+                            Spacer(Modifier.height(4.dp))
 
                             val opciones = when (pizzaSeleccionada) {
                                 "Romana" -> listOf("Con champiñones", "Sin champiñones")
@@ -132,16 +132,13 @@ fun HacerPedido(
                                     Text(opcion, fontFamily = MiFuenteFamilia, color = Color.White)
                                 }
                             }
-
-
                             Spacer(Modifier.height(4.dp))
-
                         }
                     }
                 }
             }
 
-            Spacer(Modifier.height(24.dp))
+            Spacer(Modifier.height(4.dp))
 
             Text(text = stringResource(R.string.label_seleccionar_tamano),
                 fontFamily = MiFuenteFamilia,

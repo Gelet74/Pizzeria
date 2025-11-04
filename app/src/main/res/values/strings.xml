@@ -67,13 +67,9 @@
     <string name="resumen_pedido">Resumen Pedido</string>
     <string name="formulario_pago">Formulario pago</string>
     <string name="resumen_pago">Resumen Pago</string>
-    <string name="pantalla_inicio">Pantalla de inicio</string>
-    <string name="pantalla_HacerPedido">Haz Tu Pedido!!!</string>
-    <string name="pantalla_ResumenPedido">Resumen Pedido</string>
-    <string name="pantalla_FormularioPago">Formulario Pago</string>
-    <string name="pantalla_ResumenPago">Resumen Pago</string>
     <string name="siguiente">Siguiente</string>
     <string name="atras">Atras</string>
     <string name="inicio">Inicio</string>
-
+    <string name="Haz_pedido">Haz Tu Pedido!!!</string>
+    <string name="Resumen_pedido">Resumen Del Pedido</string>
 </resources>

@@ -87,12 +87,62 @@ fun ResumenPedido(
                             style = MaterialTheme.typography.headlineSmall
                         )
                     }
+                    val imagenesOpcion = obtenerImagenOpcionPizza(
+                        uiState.pizzaSeleccionada,
+                        uiState.opcionSeleccionada
+                    )
+
+                    if (imagenesOpcion != null) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Image(
+                                painter = painterResource(id = imagenesOpcion.first),
+                                contentDescription = null,
+                                modifier = Modifier.size(120.dp)
+                            )
+                            imagenesOpcion.second?.let {
+                                Spacer(Modifier.width(8.dp))
+                                Image(
+                                    painter = painterResource(id = it),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(120.dp)
+                                )
+                            }
+                        }
+                    } else {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                            contentDescription = null,
+                            modifier = Modifier.size(180.dp)
+                        )
+                    }
+
+
+
+
+                }
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Row {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Text(
+                            "Bebida: ${uiState.bebidaSeleccionada}",
+                            style = MaterialTheme.typography.headlineSmall
+                        )
+                        Text(
+                            "Cantidad bebidas: ${uiState.cantidadBebida}",
+                            style = MaterialTheme.typography.headlineSmall
+                        )
+                    }
                     Image(
                         painter = painterResource(
-                            id = obtenerImagenOpcionPizza(
-                                uiState.pizzaSeleccionada,
-                                uiState.opcionSeleccionada
-                            ) ?: R.drawable.ic_launcher_foreground
+                            id = obtenerImagenBebida(uiState.bebidaSeleccionada)
+                                ?: R.drawable.ic_launcher_foreground
                         ),
                         contentDescription = null,
                         modifier = Modifier.size(180.dp)
@@ -101,21 +151,6 @@ fun ResumenPedido(
 
                 }
             }
-            Spacer(modifier = Modifier.height(4.dp))
-
-            Card(modifier = Modifier.fillMaxWidth()) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        "Bebida: ${uiState.bebidaSeleccionada}",
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-                    Text(
-                        "Cantidad bebidas: ${uiState.cantidadBebida}",
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-                }
-            }
-
             Spacer(modifier = Modifier.height(8.dp))
 
 
@@ -149,7 +184,7 @@ fun BotonCancelar(
         modifier = modifier
     ) {
         Text(
-            text = stringResource(R.string.inicio),
+            text = stringResource(R.string.atras),
             fontFamily = MiFuenteFamilia
         )
     }
@@ -181,29 +216,34 @@ fun BotonPago(
     }
 }
 
-fun obtenerImagenOpcionPizza(nombrePizza: String, opcion: String): Int? {
+
+fun obtenerImagenOpcionPizza(nombrePizza: String, opcion: String): Pair<Int, Int?>? {
     return when (nombrePizza) {
         "Romana" -> when (opcion) {
-            "Con champiñones", "With mushrooms" -> R.drawable.champi
-            "Sin champiñones", "Without mushrooms"  -> R.drawable.sin_champi
+            "Con champiñones", "With mushrooms" -> R.drawable.champi to null
+            "Sin champiñones", "Without mushrooms" -> R.drawable.sin_champi to null
             else -> null
         }
+
         "Barbacoa" -> when (opcion) {
-            "Pollo", "Chicken" -> R.drawable.pollo
-            "Cerdo", "Pork" -> R.drawable.cerdo
-            "Ternera", "Beef" -> R.drawable.ternera
+            "Pollo", "Chicken" -> R.drawable.pollo to null
+            "Cerdo", "Pork" -> R.drawable.cerdo to null
+            "Ternera", "Beef" -> R.drawable.ternera to null
             else -> null
         }
+
         "Margarita" -> when (opcion) {
-            "Con piña", "With Pineapple" -> R.drawable.pina
-            "Sin piña", "Without Pineapple" -> R.drawable.sin_pina
-            "Vegana", "Vegan" -> R.drawable.vegana
-            "No vegana", "Not Vegan" -> R.drawable.no_vegana
+            "Con piña y vegana" -> R.drawable.pina to R.drawable.vegana
+            "Con piña y no vegana" -> R.drawable.pina to R.drawable.no_vegana
+            "Sin piña y vegana" -> R.drawable.sin_pina to R.drawable.vegana
+            "Sin piña y no vegana" -> R.drawable.sin_pina to R.drawable.no_vegana
             else -> null
         }
+
         else -> null
     }
 }
+
 
  fun obtenerImagenBebida(nombre: String): Int? {
     return when (nombre) {

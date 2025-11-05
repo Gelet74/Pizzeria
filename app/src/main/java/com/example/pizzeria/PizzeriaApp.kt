@@ -84,7 +84,7 @@ fun PizzeriaApp(
                         navController.navigate(Pantallas.ResumenPedido.name)
                     },
                     onBotonInicioPulsado = {
-                        navController.navigate(Pantallas.Inicio.name)
+                        navController.popBackStack(Pantallas.Inicio.name, inclusive = false)
                     }
                 )
             }
@@ -92,13 +92,21 @@ fun PizzeriaApp(
             composable(Pantallas.FormularioPago.name) {
                 FormularioPago(
                     viewModel = viewModel,
+                    onBotonResumenPagoPulsado =  {
+                        navController.navigate(Pantallas.ResumenPago.name)
+                    },
+                    onBotonInicioPagoPulsado = {
+                        navController.popBackStack(Pantallas.Inicio.name, inclusive = false)
+                    }
                 )
             }
-
             // -------- PANTALLA VER PEDIDOS --------
             composable(Pantallas.VerPedidos.name) {
                 Verpedidos(
                     viewModel = viewModel,
+                    onBotonInicioVerPedidosPulsado = {
+                        navController.popBackStack(Pantallas.Inicio.name, inclusive = false)
+                    }
                 )
             }
             // -------- PANTALLA RESUMEN PEDIDO --------
@@ -106,17 +114,30 @@ fun PizzeriaApp(
                 ResumenPedido(
                     viewModel = viewModel,
                     onBotonCancelarPulsado =  {
-                        navController.navigate(Pantallas.Inicio.name)
+                        navController.navigate(Pantallas.HacerPedido.name)
                     },
                     onBotonPagoPulsado = {
                         navController.navigate(Pantallas.FormularioPago.name)
                     }
                 )
             }
+            // -------- PANTALLA RESUMEN PAGO --------
+            composable(Pantallas.ResumenPago.name) {
+                ResumenPago(
+                    viewModel = viewModel,
+                    onBotonAceptarResumenPagoPulsado =  {
+                        navController.popBackStack(Pantallas.Inicio.name, inclusive = false)
+                    },
+                    onBotonEnviarPulsado = {
+                        navController.popBackStack(Pantallas.Inicio.name, inclusive = false)
+                    }
+                )
+
+
+            }
         }
     }
 }
-
 // ---------- TOP BAR ----------
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

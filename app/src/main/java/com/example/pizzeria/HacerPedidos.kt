@@ -1,5 +1,6 @@
 package com.example.pizzeria
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.layout.*
@@ -10,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pizzeria.modelo.Precios
@@ -115,6 +117,28 @@ fun HacerPedido(
 
                             opciones.forEach { opcion ->
                                 val selectedOption = uiState.opcionSeleccionada == opcion
+
+
+                                val imagenInicio = when (opcion) {
+                                    "Con champiñones" -> R.drawable.champi
+                                    "Sin champiñones" -> R.drawable.sin_champi
+                                    "Cerdo" -> R.drawable.cerdo
+                                    "Pollo" -> R.drawable.pollo
+                                    "Ternera" -> R.drawable.ternera
+                                    "Con piña y vegana", "Con piña y no vegana"-> R.drawable.pina
+                                    "Sin piña y vegana", "Sin piña y no vegana" -> R.drawable.sin_pina
+                                    else -> R.drawable.ic_launcher_foreground
+                                }
+
+
+                                val imagenFinal = when (opcion) {
+                                    "Con piña y vegana", -> R.drawable.vegana
+                                    "Sin piña y vegana"  -> R.drawable.vegana
+                                    "Con piña y no vegana"  -> R.drawable.no_vegana
+                                    "Sin piña y no vegana" -> R.drawable.no_vegana
+                                    else -> null
+                                }
+
                                 Button(
                                     onClick = {
                                         viewModel.seleccionarPizza(pizzaSeleccionada)
@@ -129,9 +153,39 @@ fun HacerPedido(
                                         .fillMaxWidth()
                                         .padding(vertical = 2.dp)
                                 ) {
-                                    Text(opcion, fontFamily = MiFuenteFamilia, color = Color.White)
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) {
+
+                                        Image(
+                                            painter = painterResource(id = imagenInicio),
+                                            contentDescription = "Imagen $opcion",
+                                            modifier = Modifier.size(36.dp)
+                                        )
+
+
+                                        Text(
+                                            opcion,
+                                            fontFamily = MiFuenteFamilia,
+                                            color = Color.White,
+                                            modifier = Modifier.weight(1f),
+                                            textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                                        )
+
+
+                                        imagenFinal?.let {
+                                            Image(
+                                                painter = painterResource(id = it),
+                                                contentDescription = "Icono extra $opcion",
+                                                modifier = Modifier.size(36.dp)
+                                            )
+                                        }
+                                    }
                                 }
                             }
+
                             Spacer(Modifier.height(4.dp))
                         }
                     }
@@ -247,7 +301,7 @@ fun HacerPedido(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
             ) {
-                BotonInicio(onClick = { onBotonInicioPulsado("Inicio") })
+                BotonInicio(onClick = { onBotonInicioPulsado("Atrás") })
                 BotonResumenPedido(onClick = { onBotonResumenPedidoPulsado("Resumen Pedido") })
             }
 
@@ -277,7 +331,7 @@ fun BotonInicio(onClick: () -> Unit,
             modifier = modifier
         ) {
             Text(
-                text = stringResource(R.string.inicio),
+                text = stringResource(R.string.atras),
                 fontFamily = MiFuenteFamilia
             )
         }

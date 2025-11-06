@@ -50,7 +50,6 @@
     <string name="tarjeta_elegida">Tarjeta Elegida:</string>
     <string name="pago_exito_msg">¡Pago Procesado con Éxito!</string>
     <string name="label_cliente">Cliente</string>
-    <string name="label_fecha_hora">Fecha y Hora</string>
     <string name="label_metodo">Método</string>
     <string name="label_tarjeta_cuenta">Tarjeta/Cuenta</string>
     <string name="label_total_pagado">TOTAL PAGADO:</string>
@@ -74,4 +73,8 @@
     <string name="Haz_pedido">Haz Tu Pedido!!!</string>
     <string name="Resumen_pedido">Resumen Del Pedido</string>
     <string name="pagar">Pagar</string>
-  </resources>
+    <string name="resumen_de_pedidos">Resumen de Pedidos</string>
+    <string name="pedido">Pedido #%1$d: %2$s</string>
+    <string name="bebida">Bebida</string>
+
+</resources>

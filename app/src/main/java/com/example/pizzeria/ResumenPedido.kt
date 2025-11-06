@@ -206,37 +206,37 @@ fun BotonPago(
 }
 
 
- fun obtenerImagenPizza(nombre: String?): Int? {
-    val base = nombre?.substringBefore("(")?.trim()
-    return when (base) {
-        "Romana" -> R.drawable.romana
-        "Barbacoa" -> R.drawable.barbacoa
-        "Margarita" -> R.drawable.margarita
+fun obtenerImagenPizza(nombre: String?): Int? {
+    return when (nombre?.lowercase()?.trim()) {
+        "romana" -> R.drawable.romana
+        "barbacoa" -> R.drawable.barbacoa
+        "margarita" -> R.drawable.margarita
         else -> null
     }
 }
 
 
 fun obtenerImagenOpcionPizza(nombrePizza: String, opcion: String): Pair<Int, Int?>? {
-    return when (nombrePizza) {
-        "Romana" -> when (opcion) {
-            "Con champiñones", "With mushrooms" -> R.drawable.champi to null
-            "Sin champiñones", "Without mushrooms" -> R.drawable.sin_champi to null
+    return when (nombrePizza.lowercase()) {
+
+        "romana" -> when (opcion.lowercase()) {
+            "con champiñones", "with mushrooms" -> R.drawable.champi to null
+            "sin champiñones", "without mushrooms" -> R.drawable.sin_champi to null
             else -> null
         }
 
-        "Barbacoa" -> when (opcion) {
-            "Pollo", "Chicken" -> R.drawable.pollo to null
-            "Cerdo", "Pork" -> R.drawable.cerdo to null
-            "Ternera", "Beef" -> R.drawable.ternera to null
+        "barbacoa" -> when (opcion.lowercase()) {
+            "pollo", "chicken meat" -> R.drawable.pollo to null
+            "cerdo", "pork meat" -> R.drawable.cerdo to null
+            "ternera", "beef meat" -> R.drawable.ternera to null
             else -> null
         }
 
-        "Margarita" -> when (opcion) {
-            "Con piña y vegana" -> R.drawable.pina to R.drawable.vegana
-            "Con piña y no vegana" -> R.drawable.pina to R.drawable.no_vegana
-            "Sin piña y vegana" -> R.drawable.sin_pina to R.drawable.vegana
-            "Sin piña y no vegana" -> R.drawable.sin_pina to R.drawable.no_vegana
+        "margarita" -> when (opcion.lowercase()) {
+            "con piña y vegana", "with pineapple and vegan" -> R.drawable.pina to R.drawable.vegana
+            "con piña y no vegana", "with pineapple and non-vegan" -> R.drawable.pina to R.drawable.no_vegana
+            "sin piña y vegana", "without pineapple and vegan" -> R.drawable.sin_pina to R.drawable.vegana
+            "sin piña y no vegana", "without pineapple and non-vegan" -> R.drawable.sin_pina to R.drawable.no_vegana
             else -> null
         }
 
@@ -245,11 +245,11 @@ fun obtenerImagenOpcionPizza(nombrePizza: String, opcion: String): Pair<Int, Int
 }
 
 
- fun obtenerImagenBebida(nombre: String): Int? {
-    return when (nombre) {
-        "Agua" -> R.drawable.agua
-        "Cola" -> R.drawable.cola
-        "Sin bebida" -> R.drawable.sin_bebida
+fun obtenerImagenBebida(nombre: String?): Int? {
+    return when (nombre?.lowercase()?.trim()) {
+        "agua" -> R.drawable.agua
+        "cola" -> R.drawable.cola
+        "sin_bebida", "sin bebida", "no drink" -> R.drawable.sin_bebida
         else -> null
     }
 }

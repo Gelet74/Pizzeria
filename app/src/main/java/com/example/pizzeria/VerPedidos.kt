@@ -36,7 +36,7 @@ fun Verpedidos(
                 .padding(16.dp)
         ) {
             Text(
-                text = "Resumen de Pedidos",
+                text = stringResource(R.string.resumen_de_pedidos),
                 fontFamily = MiFuenteFamilia,
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(bottom = 16.dp)
@@ -53,9 +53,10 @@ fun Verpedidos(
            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = onBotonInicioVerPedidosPulsado,
-                modifier = Modifier .padding(bottom = 16.dp)
-                                    .width(120.dp)
-                                    .align(Alignment.CenterHorizontally)
+                modifier = Modifier
+                    .padding(bottom = 16.dp)
+                    .width(120.dp)
+                    .align(Alignment.CenterHorizontally)
             ) {
                 Text(
                     text = stringResource(R.string.atras),
@@ -69,6 +70,41 @@ fun Verpedidos(
 fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
 
     var expandido by remember { mutableStateOf(false) }
+
+   val pizzaTraducida = when (pedido.pizza) {
+        "Romana" -> stringResource(R.string.pizza1)
+        "Barbacoa" -> stringResource(R.string.pizza2)
+        "Margarita" -> stringResource(R.string.pizza3)
+        else -> pedido.pizza
+    }
+
+    val tamanoTraducido = when (pedido.tamanoPizza) {
+        "Pequeña" -> stringResource(R.string.tamano_pequena)
+        "Mediana" -> stringResource(R.string.tamano_mediana)
+        "Grande" -> stringResource(R.string.tamano_grande)
+        else -> pedido.tamanoPizza
+    }
+
+    val bebidaTraducida = when (pedido.bebida) {
+        "Cola" -> stringResource(R.string.bebida1)
+        "Agua" -> stringResource(R.string.bebida2)
+        "Sin Bebida" -> stringResource(R.string.bebida3)
+        else -> pedido.bebida
+    }
+    val opcionTraducida = when (pedido.opcionPizza) {
+       "Con champiñones" -> stringResource(R.string.opcion_champi)
+       "Sin champiñones" -> stringResource(R.string.opcion_sin_champi)
+        "Cerdo" -> stringResource(R.string.opcion_cerdo)
+        "Pollo" -> stringResource(R.string.opcion_pollo)
+        "Ternera" -> stringResource(R.string.opcion_ternera)
+        "Con piña y vegana" -> stringResource(R.string.opcion_con_pina_vegana)
+        "Con piña y no vegana" ->stringResource(R.string.opcion_con_pina_no_vegana)
+        "Sin piña y vegana" -> stringResource(R.string.opcion_sin_pina_vegana)
+        "Sin piña y no vegana" ->stringResource(R.string.opcion_sin_pina_no_vegana)
+        else -> pedido.opcionPizza
+    }
+
+
 
     Card(
         modifier = modifier
@@ -87,12 +123,12 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
             ) {
                 Column {
                     Text(
-                        text = "Pedido #${pedido.idpedido}: ${pedido.pizza}",
+                        text = stringResource(R.string.pedido, pedido.idpedido, pizzaTraducida),
                         fontFamily = MiFuenteFamilia,
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Bebida: ${pedido.bebida}",
+                        text = stringResource(R.string.bebida) + ": $bebidaTraducida",
                         fontFamily = MiFuenteFamilia,
                         style = MaterialTheme.typography.titleMedium
                     )
@@ -108,19 +144,14 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
 
             if (expandido) {
                 Spacer(modifier = Modifier.padding(vertical = 8.dp))
-                Text("Tamaño: ${pedido.tamanoPizza}",
-                        fontFamily = MiFuenteFamilia)
-                Text("Cantidad de Pizzas: ${pedido.cantidadPizza}",
-                    fontFamily = MiFuenteFamilia)
-                Text("Opcion Pizza: ${pedido.opcionPizza}",
-                    fontFamily = MiFuenteFamilia)
-                Text("Cantidad de Bebidas: ${pedido.cantidadBebida}",
-                    fontFamily = MiFuenteFamilia)
-                Text("Tipo de Tarjeta: ${pedido.tipoTarjeta}",
-                    fontFamily = MiFuenteFamilia)
+                Text(stringResource(R.string.label_tamano)+": $tamanoTraducido", fontFamily = MiFuenteFamilia)
+                Text(stringResource(R.string.label_cantidad)+" ${pedido.cantidadPizza}", fontFamily = MiFuenteFamilia)
+                Text(stringResource(R.string.label_opcion)+" ${opcionTraducida}", fontFamily = MiFuenteFamilia)
+                Text(stringResource(R.string.label_cantidad_bebidas)+": ${pedido.cantidadBebida}", fontFamily = MiFuenteFamilia)
+                Text(stringResource(R.string.tipo_tarj)+": ${pedido.tipoTarjeta}", fontFamily = MiFuenteFamilia)
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "PRECIO TOTAL: ${"%.2f".format(pedido.precioTotal)}€",
+                    text = stringResource(R.string.txt_precio_total)+": ${"%.2f".format(pedido.precioTotal)}€",
                     style = MaterialTheme.typography.titleLarge,
                     fontFamily = MiFuenteFamilia
                 )
@@ -128,3 +159,4 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
         }
     }
 }
+

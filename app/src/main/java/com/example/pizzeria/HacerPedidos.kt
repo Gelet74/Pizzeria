@@ -1,6 +1,5 @@
 package com.example.pizzeria
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -19,6 +18,7 @@ import com.example.pizzeria.ui.ViewModel.PizzeriaViewModel
 import com.example.pizzeria.ui.theme.MiFuenteFamilia
 import com.example.pizzeria.ui.theme.onPrimaryLight
 import com.example.pizzeria.ui.theme.primaryLight
+import com.example.pizzeria.modelo.Precios
 
 @Composable
 fun HacerPedido(
@@ -31,11 +31,9 @@ fun HacerPedido(
     var pizzaSeleccionada by remember { mutableStateOf("") }
     var Pizzaexpandedida by remember { mutableStateOf(false) }
 
-    val pizzas = listOf(
-        stringResource(R.string.pizza1),
-        stringResource(R.string.pizza2),
-        stringResource(R.string.pizza3)
-    )
+
+    val pizzas = listOf("romana", "barbacoa", "margarita")
+    val bebidas = listOf("cola", "agua", "sin_bebida")
 
     Box(
         modifier = modifier
@@ -56,7 +54,7 @@ fun HacerPedido(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // ---------- PIZZAS ----------
+
             Text(
                 text = stringResource(R.string.txt_seleccionar_pizza),
                 fontFamily = MiFuenteFamilia,
@@ -66,15 +64,22 @@ fun HacerPedido(
             Spacer(Modifier.height(4.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                pizzas.forEach { tipo ->
+                pizzas.forEach { clave ->
+                    val nombrePizza = when (clave) {
+                        "romana" -> stringResource(R.string.pizza1)
+                        "barbacoa" -> stringResource(R.string.pizza2)
+                        "margarita" -> stringResource(R.string.pizza3)
+                        else -> clave
+                    }
+
                     Button(
                         onClick = {
-                            pizzaSeleccionada = tipo
-                            viewModel.seleccionarPizza(tipo)
+                            pizzaSeleccionada = clave
+                            viewModel.seleccionarPizza(clave)
                             Pizzaexpandedida = true
                         },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (uiState.pizzaSeleccionada == tipo) Color(0xFFFFA726) else primaryLight,
+                            containerColor = if (uiState.pizzaSeleccionada == clave) Color(0xFFFFA726) else primaryLight,
                             contentColor = onPrimaryLight
                         ),
                         modifier = Modifier
@@ -82,7 +87,7 @@ fun HacerPedido(
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
                     ) {
-                        Text(tipo, fontFamily = MiFuenteFamilia, color = Color.White)
+                        Text(nombrePizza, fontFamily = MiFuenteFamilia, color = Color.White)
                     }
                 }
 
@@ -97,7 +102,14 @@ fun HacerPedido(
                     ) {
                         Column(modifier = Modifier.padding(12.dp)) {
                             Text(
-                                "Opciones para $pizzaSeleccionada",
+                                "Opciones para ${
+                                    when (pizzaSeleccionada) {
+                                        "romana" -> stringResource(R.string.pizza1)
+                                        "barbacoa" -> stringResource(R.string.pizza2)
+                                        "margarita" -> stringResource(R.string.pizza3)
+                                        else -> pizzaSeleccionada
+                                    }
+                                }",
                                 fontFamily = MiFuenteFamilia,
                                 color = Color.Black,
                                 style = MaterialTheme.typography.titleSmall
@@ -106,16 +118,16 @@ fun HacerPedido(
                             Spacer(Modifier.height(4.dp))
 
                             val opciones = when (pizzaSeleccionada) {
-                                stringResource(R.string.pizza1) -> listOf(
+                                "romana" -> listOf(
                                     stringResource(R.string.opcion_champi),
                                     stringResource(R.string.opcion_sin_champi)
                                 )
-                                stringResource(R.string.pizza2) -> listOf(
+                                "barbacoa" -> listOf(
                                     stringResource(R.string.opcion_cerdo),
                                     stringResource(R.string.opcion_pollo),
                                     stringResource(R.string.opcion_ternera)
                                 )
-                                stringResource(R.string.pizza3) -> listOf(
+                                "margarita" -> listOf(
                                     stringResource(R.string.opcion_con_pina_vegana),
                                     stringResource(R.string.opcion_con_pina_no_vegana),
                                     stringResource(R.string.opcion_sin_pina_vegana),
@@ -129,7 +141,6 @@ fun HacerPedido(
 
                                 Button(
                                     onClick = {
-                                        viewModel.seleccionarPizza(pizzaSeleccionada)
                                         viewModel.seleccionarOpcionPizza(opcion)
                                         Pizzaexpandedida = false
                                     },
@@ -161,13 +172,14 @@ fun HacerPedido(
             Spacer(Modifier.height(8.dp))
 
             Row {
-                com.example.pizzeria.modelo.Precios.tamanos.forEach { t ->
+                Precios.tamanos.forEach { t ->
                     val nombreTraducido = when (t.nombre) {
                         "Pequeña" -> stringResource(R.string.tamano_pequena)
                         "Mediana" -> stringResource(R.string.tamano_mediana)
                         "Grande" -> stringResource(R.string.tamano_grande)
                         else -> t.nombre
                     }
+
                     Button(
                         onClick = { viewModel.seleccionarTamano(t.nombre) },
                         colors = ButtonDefaults.buttonColors(
@@ -198,18 +210,19 @@ fun HacerPedido(
 
             Spacer(Modifier.height(8.dp))
 
-            val bebidas = listOf(
-                stringResource(R.string.bebida1),
-                stringResource(R.string.bebida2),
-                stringResource(R.string.bebida3)
-            )
-
             Row {
-                bebidas.forEach { b ->
+                bebidas.forEach { clave ->
+                    val nombreBebida = when (clave) {
+                        "cola" -> stringResource(R.string.bebida1)
+                        "agua" -> stringResource(R.string.bebida2)
+                        "sin_bebida" -> stringResource(R.string.bebida3)
+                        else -> clave
+                    }
+
                     Button(
-                        onClick = { viewModel.seleccionarBebida(b) },
+                        onClick = { viewModel.seleccionarBebida(clave) },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (uiState.bebidaSeleccionada == b) Color(0xFFFFA726) else primaryLight,
+                            containerColor = if (uiState.bebidaSeleccionada == clave) Color(0xFFFFA726) else primaryLight,
                             contentColor = onPrimaryLight
                         ),
                         modifier = Modifier
@@ -217,14 +230,14 @@ fun HacerPedido(
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
                     ) {
-                        Text(b, fontFamily = MiFuenteFamilia, color = Color.White)
+                        Text(nombreBebida, fontFamily = MiFuenteFamilia, color = Color.White)
                     }
                 }
             }
 
             Spacer(Modifier.height(32.dp))
 
-            // ---------- BOTONES INFERIORES ----------
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center

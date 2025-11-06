@@ -59,7 +59,7 @@ fun Inicio(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Column {
-                        Text(text = stringResource(R.string.label_nombre) + " " + stringResource(R.string.nombre))
+                        Text(text = stringResource(R.string.label_nombre) + " Angela Garcia"  )
                         Text(text = stringResource(R.string.label_correo) + " " + stringResource(R.string.correo))
                         Text(text = stringResource(R.string.label_tfno) + " " + stringResource(R.string.tfno))
                     }

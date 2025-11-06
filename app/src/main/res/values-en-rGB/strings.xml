@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="nombre">Lucía García</string>
+    <string name="correo">ejemplo@algo.com</string>
     <string name="tfno">654 215 236</string>
     <string name="pizza1">Roman</string>
     <string name="pizza2">Barbecue</string>
@@ -7,9 +9,10 @@
     <string name="bebida1">Water</string>
     <string name="bebida2">Coke</string>
     <string name="bebida3">No drink</string>
-    <string name="opcion_pina">With Pineapple</string>
-    <string name="opcion_sin_pina">Without Pineapple</string>
-    <string name="opcion_vegana">Vegan</string>
+    <string name="opcion_con_pina_vegana">With Pineapple and vegan</string>
+    <string name="opcion_sin_pina_vegana">Without Pineapple and vegan</string>
+    <string name="opcion_con_pina_no_vegana">With Pineapple and no vegan</string>
+    <string name="opcion_sin_pina_no_vegana">Without Pineapple and no vegan</string>
     <string name="opcion_champi">With Mushrooms</string>
     <string name="opcion_sin_champi">Without Mushrooms</string>
     <string name="opcion_pollo">Chicken Meat</string>
@@ -35,7 +38,7 @@
     <string name="resumen_title">Order Summary</string>
     <string name="label_pizza">Pizza:</string>
     <string name="label_tamano">Size:</string>
-    <string name="label_cantidad">Quantity:</string>
+    <string name="label_cantidad">Pizza quantity:</string>
     <string name="label_opcion">Option:</string>
     <string name="label_total">TOTAL:</string>
     <string name="pago_form_title">Payment Form</string>
@@ -57,8 +60,6 @@
     <string name="tamano_grande">Large</string>
     <string name="hacer_pedido">Make order</string>
     <string name="ver_pedidos">See orders</string>
-    <string name="nombre">name</string>
-    <string name="correo">email</string>
     <string name="btn_cerrar">Close</string>
     <string name="btn_resumen_pedido">Order Summary</string>
     <string name="resumen_pedido">Order Summary</string>

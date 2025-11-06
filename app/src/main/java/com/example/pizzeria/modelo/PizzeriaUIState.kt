@@ -2,10 +2,6 @@ package com.example.pizzeria.modelo
 
 data class PizzeriaUIState(
 
-    val pizzaRomanaNombre:String = "Romana",
-    val pizzaBarbacoaNombre:String = "Barbacoa",
-    val pizzaMargaritaNombre:String = "Margarita",
-
     val pizzaSeleccionada: String = "",
     val opcionSeleccionada: String = "",
     val tamanoSeleccionado: String = "",

@@ -9,9 +9,10 @@
     <string name="bebida1">Agua</string>
     <string name="bebida2">Cola</string>
     <string name="bebida3">Sin bebida</string>
-    <string name="opcion_pina">Con piña</string>
-    <string name="opcion_sin_pina">Sin piña</string>
-    <string name="opcion_vegana">Vegana</string>
+    <string name="opcion_con_pina_vegana">Con piña y vegana</string>
+    <string name="opcion_sin_pina_vegana">Sin piña y vegana</string>
+    <string name="opcion_con_pina_no_vegana">Con piña y no vegana</string>
+    <string name="opcion_sin_pina_no_vegana">Sin piña y no vegana</string>
     <string name="opcion_champi">Con Champiñones</string>
     <string name="opcion_sin_champi">Sin Champiñones</string>
     <string name="opcion_pollo">Carne de Pollo</string>

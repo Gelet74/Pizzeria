@@ -31,13 +31,7 @@ fun Inicio(
             .fillMaxSize()
             .background(color = Color(0xFFFDFD96))
     ) {
-        Image(
-            painter = imagen,
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            alpha = 0.8f,
-            modifier = Modifier.fillMaxSize()
-        )
+
 
         Column(
             modifier = Modifier
@@ -45,11 +39,19 @@ fun Inicio(
                 .padding(16.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
+            Image(
+                painter = imagen,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                alpha = 0.8f,
+                modifier = Modifier.fillMaxWidth()
+                    //.height(200.dp)
+                    .padding(top = 120.dp)
+            )
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(160.dp)
-                    .padding(top = 40.dp)
                     .padding(16.dp)
             ) {
                 Row(
@@ -94,7 +96,7 @@ fun BotonSiguiente(
             text = stringResource(R.string.hacer_pedido),
             fontFamily = MiFuenteFamilia
         )
-    }
+        }
 }
 @Composable
 fun BotonResumen(

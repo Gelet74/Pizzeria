@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType.Companion.Uri
+import android.net.Uri
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -135,15 +135,18 @@ fun ResumenPago(
             ) {
                 BotonAceptarResumenPago(
                     onClick = {
+                        viewModel.registrarPedidoActual()
                         mostrarDialogo = true
                     }
                 )
                 BotonEnviarPago(
-                    onClick = { enviarCorreo = true }
+                    onClick = {
+                        viewModel.registrarPedidoActual()
+                        enviarCorreo = true }
                 )
             }
 
-           /* if (enviarCorreo) {
+            /*if (enviarCorreo) {
                 Intent(Intent.ACTION_SEND).apply {
                     // The intent does not have a URI, so declare the "text/plain" MIME type
                     type = "text/plain"

@@ -26,6 +26,10 @@ class PizzeriaViewModel : ViewModel() {
     private val _pedidos = MutableStateFlow<List<Pedido>>(emptyList())
     val pedidos: StateFlow<List<Pedido>> = _pedidos.asStateFlow()
 
+    private val _fechaValida = MutableStateFlow(true)
+    val fechaValida: StateFlow<Boolean> = _fechaValida.asStateFlow()
+
+
     init {
         cargarPedidos()
     }
@@ -146,6 +150,13 @@ class PizzeriaViewModel : ViewModel() {
     private val _formularioValido = MutableStateFlow(false)
     val formularioValido: StateFlow<Boolean> = _formularioValido.asStateFlow()
 
+    private val _mostrarDialogo = MutableStateFlow(false)
+    val mostrarDialogo: StateFlow<Boolean> = _mostrarDialogo
+
+    fun cerrarDialogo() {
+        _mostrarDialogo.value = false
+    }
+
     fun seleccionarOpcionPago(opcion: OpcionPago) {
         _tipoPagoSeleccionado.value = opcion
         validarCampos()
@@ -159,14 +170,45 @@ class PizzeriaViewModel : ViewModel() {
     }
 
     fun actualizarFechaCaducidad(valor: String) {
-        if (valor.length <= 5) {
-            _fechaCaducidad.value = valor
-            validarCampos()
+        _fechaCaducidad.value = valor
+
+        val formatoCompleto = valor.length == 5 && valor[2] == '/'
+        val partes = valor.split("/")
+
+        val mes = partes.getOrNull(0)?.toIntOrNull()
+        val anio = partes.getOrNull(1)?.toIntOrNull()?.plus(2000)
+
+        val mesValido = mes in 1..12
+        val anioValido = anio != null && anio >= 2025
+
+        val esValida = if (formatoCompleto) {
+            mesValido && anioValido
+        } else {
+            true
         }
+
+        _fechaValida.value = esValida
+
+
+        _mostrarDialogo.value = formatoCompleto && !esValida
+
+        validarCampos()
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     fun actualizarCvc(valor: String) {
-        if (valor.length <= 4 && valor.all { it.isDigit() }) {
+        if (valor.length <= 3 && valor.all { it.isDigit() }) {
             _cvc.value = valor
             validarCampos()
         }
@@ -177,5 +219,24 @@ class PizzeriaViewModel : ViewModel() {
             _numeroTarjeta.value.length == 16 &&
                     _fechaCaducidad.value.length == 5 &&
                     _cvc.value.length in 3..4
+    }
+
+    fun registrarPedidoActual (){
+        val state = _uiState.value
+        val pedido = Pedido(
+            idpedido = _pedidos.value.size + 1,
+            pizza = state.pizzaSeleccionada,
+            tamanoPizza = state.tamanoSeleccionado,
+            opcionPizza = state.opcionSeleccionada,
+            bebida = state.bebidaSeleccionada,
+            cantidadPizza = state.cantidadPizza,
+            cantidadBebida = state.cantidadBebida,
+            precioPizza = state.precioPizza,
+            precioBebida = state.precioBebida,
+            precioTotal = state.precioTotal,
+            tipoTarjeta = _tipoPagoSeleccionado.value.nombre
+        )
+        _pedidos.value = _pedidos.value + pedido
+
     }
 }

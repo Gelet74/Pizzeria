@@ -116,6 +116,8 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
                     fontFamily = MiFuenteFamilia)
                 Text("Cantidad de Bebidas: ${pedido.cantidadBebida}",
                     fontFamily = MiFuenteFamilia)
+                Text("Tipo de Tarjeta: ${pedido.tipoTarjeta}",
+                    fontFamily = MiFuenteFamilia)
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "PRECIO TOTAL: ${"%.2f".format(pedido.precioTotal)}€",

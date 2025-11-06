@@ -69,10 +69,11 @@ fun HacerPedido(
                     Button(
                         onClick = {
                             pizzaSeleccionada = tipo
+                            viewModel.seleccionarPizza(tipo)
                             Pizzaexpandedida = true
                         },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = primaryLight,
+                            containerColor = if (uiState.pizzaSeleccionada==tipo) Color(0xFFFFA726) else primaryLight,
                             contentColor = onPrimaryLight
                         ),
                         modifier = Modifier
@@ -204,7 +205,7 @@ fun HacerPedido(
                     Button(
                         onClick = { viewModel.seleccionarTamano(t.nombre) },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = primaryLight,
+                            containerColor = if (uiState.tamanoSeleccionado==t.nombre) Color(0xFFFFA726) else primaryLight,
                             contentColor = onPrimaryLight
                         ),
                         modifier = Modifier
@@ -241,7 +242,7 @@ fun HacerPedido(
                     Button(
                         onClick = { viewModel.seleccionarBebida(b.nombre) },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = primaryLight,
+                            containerColor = if (uiState.bebidaSeleccionada==b.nombre) Color(0xFFFFA726) else primaryLight,
                             contentColor = onPrimaryLight
                         ),
                         modifier = Modifier

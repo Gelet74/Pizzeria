@@ -112,11 +112,37 @@ fun FormularioPago(
                 OutlinedTextField(
                     value = fechaCaducidad,
                     onValueChange = viewModel::actualizarFechaCaducidad,
-                    label = { Text("Caducidad (MM/AA)",
-                        fontFamily = MiFuenteFamilia) },
+                    label = {
+                        Text(
+                            "Caducidad (MM/AA)",
+                            fontFamily = MiFuenteFamilia
+                        )
+                    },
                     keyboardOptions = KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 8.dp)
                 )
+
+
+                val mostrarDialogo by viewModel.mostrarDialogo.collectAsState()
+
+                if (mostrarDialogo) {
+                    AlertDialog(
+                        onDismissRequest = { viewModel.cerrarDialogo() },
+                        confirmButton = {
+                            TextButton(onClick = { viewModel.cerrarDialogo() }) {
+                                Text("Aceptar")
+                            }
+                        },
+                        title = { Text("Fecha no válida") },
+                        text = {
+                            Text("Usa un mes entre 01 y 12 y un año igual o mayor a 2025.")
+                        }
+                    )
+                }
+
+
 
                 Spacer(Modifier.width(8.dp))
 

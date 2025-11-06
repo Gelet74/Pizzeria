@@ -15,9 +15,9 @@
     <string name="opcion_sin_pina_no_vegana">Without Pineapple and no vegan</string>
     <string name="opcion_champi">With Mushrooms</string>
     <string name="opcion_sin_champi">Without Mushrooms</string>
-    <string name="opcion_pollo">Chicken Meat</string>
-    <string name="opcion_cerdo">Pork Meat</string>
-    <string name="opcion_ternera">Beef Meat</string>
+    <string name="opcion_pollo">Chicken</string>
+    <string name="opcion_cerdo">Pork</string>
+    <string name="opcion_ternera">Beef</string>
     <string name="titulo_realizar_pedido">Place Order</string>
     <string name="btn_cambiar">Change</string>
     <string name="txt_seleccionar_pizza">Select your pizza</string>
@@ -25,7 +25,7 @@
     <string name="txt_precio_total">Total Price</string>
     <string name="label_seleccionar_tamano">Choose Size</string>
     <string name="label_cantidad_bebidas">Drink quantity</string>
-    <string name="bebida">Drink</string>
+    <string name="bebida">Drink: </string>
     <string name="tipo_tarj">Card Kind</string>
     <string name="tarjeta_elegida">Choosen Card:</string>
     <string name="cant_pagar">Total Account</string>
@@ -50,7 +50,6 @@
     <string name="pago_resumen_title">Payment Summary</string>
     <string name="pago_exito_msg">Payment Processed Successfully!</string>
     <string name="label_cliente">Customer</string>
-    <string name="label_fecha_hora">Date and Time</string>
     <string name="label_metodo">Method</string>
     <string name="label_tarjeta_cuenta">Card/Account</string>
     <string name="label_total_pagado">TOTAL PAID:</string>
@@ -74,4 +73,5 @@
     <string name="resumen_de_pedidos">Orders Summary</string>
     <string name="pagar">Pay</string>
     <string name="pedido">Order #%1$d: %2$s</string>
+    <string name="cantidad_resumen">Quantity: </string>
    </resources>

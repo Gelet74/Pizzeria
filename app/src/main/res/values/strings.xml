@@ -15,13 +15,13 @@
     <string name="opcion_sin_pina_no_vegana">Sin piña y no vegana</string>
     <string name="opcion_champi">Con Champiñones</string>
     <string name="opcion_sin_champi">Sin Champiñones</string>
-    <string name="opcion_pollo">Carne de Pollo</string>
-    <string name="opcion_cerdo">Carne de Cerdo</string>
-    <string name="opcion_ternera">Carne de Ternera</string>
+    <string name="opcion_pollo">Pollo</string>
+    <string name="opcion_cerdo">Cerdo</string>
+    <string name="opcion_ternera">Ternera</string>
     <string name="titulo_realizar_pedido">Realizar Pedido</string>
     <string name="btn_cambiar">Cambiar</string>
     <string name="txt_seleccionar_pizza">Selecciona tu pizza:</string>
-    <string name="txt_seleccionar_bebida">Selecciona tu bebida</string>
+    <string name="txt_seleccionar_bebida">Selecciona tu bebida:</string>
     <string name="txt_precio_total">Precio total</string>
     <string name="label_nombre">NOMBRE: </string>
     <string name="label_correo">CORREO: </string>
@@ -33,7 +33,7 @@
     <string name="resumen_title">Resumen del Pedido</string>
     <string name="label_pizza">Pizza:</string>
     <string name="label_tamano">Tamaño:</string>
-    <string name="label_cantidad">Cantidad de pizzas</string>
+    <string name="label_cantidad">Cantidad de pizzas:</string>
     <string name="label_opcion">Opción:</string>
     <string name="label_total">TOTAL:</string>
     <string name="pago_form_title">Formulario de Pago</string>
@@ -55,7 +55,7 @@
     <string name="label_total_pagado">TOTAL PAGADO:</string>
     <string name="email_asunto_justificante">Justificante de pago</string>
     <string name="mensaje_pago_realizado">Pago realizado</string>
-    <string name="label_cantidad_bebidas">Cantidad de bebidas</string>
+    <string name="label_cantidad_bebidas">Cantidad de bebidas:</string>
     <string name="label_seleccionar_tamano">Elige Tamaño</string>
     <string name="tamano_pequena">Pequeña</string>
     <string name="tamano_mediana">Mediana</string>
@@ -75,6 +75,6 @@
     <string name="pagar">Pagar</string>
     <string name="resumen_de_pedidos">Resumen de Pedidos</string>
     <string name="pedido">Pedido #%1$d: %2$s</string>
-    <string name="bebida">Bebida</string>
-
+    <string name="bebida">Bebida: </string>
+    <string name ="cantidad_resumen">Cantidad: </string>
 </resources>

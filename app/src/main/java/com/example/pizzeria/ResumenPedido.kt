@@ -24,7 +24,7 @@ fun ResumenPedido(
     viewModel: PizzeriaViewModel = viewModel(),
     modifier: Modifier = Modifier
         .fillMaxSize()
-        .padding(16.dp),
+        .padding(8.dp),
     onBotonCancelarPulsado: (String) -> Unit,
     onBotonPagoPulsado: (String) -> Unit,
 ) {
@@ -38,7 +38,7 @@ fun ResumenPedido(
         Column(
             modifier = modifier
                 .fillMaxSize()
-                //.padding(4.dp)
+                .padding(top = 4.dp)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -47,8 +47,7 @@ fun ResumenPedido(
             Box(
                 modifier = Modifier
                     .fillMaxWidth(),
-                    //.padding(bottom = 8.dp),
-                contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(
@@ -64,25 +63,24 @@ fun ResumenPedido(
                 text = stringResource(R.string.resumen_title),
                 style = MaterialTheme.typography.headlineLarge,
                 fontFamily = MiFuenteFamilia,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
+                )
 
 
             Card(modifier = Modifier.fillMaxWidth()) {
                 Row(modifier = Modifier.padding(8.dp)) {
                     Column(modifier = Modifier.padding(4.dp)) {
                         Text(
-                            "Pizza: ${uiState.pizzaSeleccionada}",
+                            text= "Pizza: ${uiState.pizzaSeleccionada}",
                             fontFamily = MiFuenteFamilia,
                             style = MaterialTheme.typography.headlineSmall
                         )
                         Text(
-                            "Tamaño: ${uiState.tamanoSeleccionado}",
+                            "${stringResource(R.string.label_tamano)} ${uiState.tamanoSeleccionado}",
                             fontFamily = MiFuenteFamilia,
                             style = MaterialTheme.typography.headlineSmall
                         )
                         Text(
-                            "Cantidad pizzas: ${uiState.cantidadPizza}",
+                            "${stringResource(R.string.cantidad_resumen)} ${uiState.cantidadPizza}",
                             fontFamily = MiFuenteFamilia,
                             style = MaterialTheme.typography.headlineSmall
                         )
@@ -131,11 +129,11 @@ fun ResumenPedido(
                 Row {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            "Bebida: ${uiState.bebidaSeleccionada}",
+                            "${stringResource(R.string.bebida)} ${uiState.bebidaSeleccionada}",
                             style = MaterialTheme.typography.headlineSmall
                         )
                         Text(
-                            "Cantidad bebidas: ${uiState.cantidadBebida}",
+                            "${stringResource(R.string.cantidad_resumen)} ${uiState.cantidadBebida}",
                             style = MaterialTheme.typography.headlineSmall
                         )
                     }

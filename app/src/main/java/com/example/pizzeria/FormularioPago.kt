@@ -32,7 +32,7 @@ fun FormularioPago(
     val numeroTarjeta by viewModel.numeroTarjeta.collectAsState()
     val fechaCaducidad by viewModel.fechaCaducidad.collectAsState()
     val cvc by viewModel.cvc.collectAsState()
-    val formularioValido by viewModel.formularioValido.collectAsState()
+
     Box(
         modifier = Modifier
             .background(color = Color(0xFFFDFD96))

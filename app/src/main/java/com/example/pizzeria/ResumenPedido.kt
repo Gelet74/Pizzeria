@@ -3,6 +3,7 @@ package com.example.pizzeria
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -93,20 +94,22 @@ fun ResumenPedido(
                     if (imagenesOpcion != null) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center,
+                            horizontalArrangement = Arrangement.SpaceBetween,
                             modifier = Modifier.fillMaxWidth()
+                                                .padding(8.dp)
                         ) {
                             Image(
                                 painter = painterResource(id = imagenesOpcion.first),
                                 contentDescription = null,
-                                modifier = Modifier.size(120.dp)
+                                modifier = Modifier.size(60.dp)
                             )
+
                             imagenesOpcion.second?.let {
                                 Spacer(Modifier.width(8.dp))
                                 Image(
                                     painter = painterResource(id = it),
                                     contentDescription = null,
-                                    modifier = Modifier.size(120.dp)
+                                    modifier = Modifier.size(70.dp)
                                 )
                             }
                         }

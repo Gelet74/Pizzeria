@@ -3,7 +3,7 @@
     <string name="correo">ejemplo@algo.com</string>
     <string name="tfno">654 215 236</string>
     <string name="pizza1">Roman</string>
-    <string name="pizza2">Barbecue</string>
+    <string name="pizza2">BBQ</string>
     <string name="pizza3">Margherita</string>
     <string name="bebida1">Water</string>
     <string name="bebida2">Coke</string>
@@ -46,7 +46,18 @@
     <string name="atras">Back</string>
     <string name="Haz_pedido">Make Your Order!!!</string>
     <string name="resumen_de_pedidos">Orders Summary</string>
-    <string name="pedido">Order #%1$d: %2$s</string>
+    <string name="pedido">Order nº %1$d</string>
     <string name="cantidad_resumen">Quantity: </string>
     <string name="opciones_para">Options for</string>
-   </resources>
+    <string name="numero_tarjeta">Card Number</string>
+    <string name="caducidad">Expiration (MM/YY)</string>
+    <string name="cvc">CVV</string>
+    <string name="fecha_erronea">Invalid Date</string>
+    <string name="mensaje">Use a month between 01 and 12 and a year equal to or greater than 2025</string>
+    <string name="metodo_pago">Payment Method</string>
+    <string name="numero">Number:</string>
+    <string name="caducidad_resumen">Expiration:</string>
+    <string name="pago_hecho">Payment Made</string>
+    <string name="pago_exito">Your payment has been completed successfully</string>
+    <string name="pedido_resumen">Order</string>
+</resources>

@@ -56,7 +56,7 @@ fun ResumenPago(
         ) {
 
             Text(
-                text = "Resumen del Pago",
+                text = stringResource(R.string.resumen_pago),
                 style = MaterialTheme.typography.headlineLarge,
                 fontFamily = MiFuenteFamilia,
                 modifier = Modifier.padding(bottom = 16.dp)
@@ -69,17 +69,47 @@ fun ResumenPago(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Pedido:", style = MaterialTheme.typography.headlineSmall)
-                    Text("Pizza: ${uiState.pizzaSeleccionada}", fontFamily = MiFuenteFamilia)
-                    Text("Tamaño: ${uiState.tamanoSeleccionado}", fontFamily = MiFuenteFamilia)
-                    Text("Cantidad pizzas: ${uiState.cantidadPizza}", fontFamily = MiFuenteFamilia)
-                    Text("Bebida: ${uiState.bebidaSeleccionada}", fontFamily = MiFuenteFamilia)
-                    Text("Cantidad bebidas: ${uiState.cantidadBebida}", fontFamily = MiFuenteFamilia)
+                    Text(stringResource(R.string.pedido_resumen),
+                        fontFamily = MiFuenteFamilia,
+                        style = MaterialTheme.typography.headlineSmall)
+
+                    Text(
+                        text = "Pizza: ${
+                            when (uiState.pizzaSeleccionada?.lowercase()) {
+                                "romana" -> stringResource(R.string.pizza1)
+                                "barbacoa" -> stringResource(R.string.pizza2)
+                                "margarita" -> stringResource(R.string.pizza3)
+                                else -> uiState.pizzaSeleccionada ?: ""
+                            }
+                        }",
+                        fontFamily = MiFuenteFamilia
+                    )
+                    Text(
+                        "${stringResource(R.string.label_tamano)} ${
+                            when (uiState.tamanoSeleccionado?.lowercase()) {
+                                "pequeña" -> stringResource(R.string.tamano_pequena)
+                                "mediana" -> stringResource(R.string.tamano_mediana)
+                                "grande" -> stringResource(R.string.tamano_grande)
+                                else -> uiState.tamanoSeleccionado ?: ""
+                            }
+                        }",
+                        fontFamily = MiFuenteFamilia
+                    )
+                    Text("${stringResource(R.string.label_cantidad)} ${uiState.cantidadPizza}",
+                             fontFamily = MiFuenteFamilia)
+                    Text("${stringResource(R.string.bebida)}${
+                        when (uiState.bebidaSeleccionada?.lowercase()) {
+                            "agua" -> stringResource(R.string.bebida1)
+                            "cola" -> stringResource(R.string.bebida2)
+                            "sin bebida" -> stringResource(R.string.bebida3)
+                            else -> uiState.bebidaSeleccionada ?: " "
+                        }   }",
+                        fontFamily = MiFuenteFamilia)
+                    Text("${stringResource(R.string.label_cantidad_bebidas)} ${uiState.cantidadBebida}", fontFamily = MiFuenteFamilia)
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-
 
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -87,7 +117,8 @@ fun ResumenPago(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Método de pago:", style = MaterialTheme.typography.headlineSmall)
+                    Text(stringResource(R.string.metodo_pago),
+                        fontFamily = MiFuenteFamilia, style = MaterialTheme.typography.headlineSmall)
 
                     if (tipoPago != null) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -104,14 +135,15 @@ fun ResumenPago(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-
                     val tarjetaOculta =
                         if (numeroTarjeta.length >= 4) "**** **** **** ${numeroTarjeta.takeLast(4)}"
                         else "**** **** **** ****"
 
-                    Text("Número: $tarjetaOculta", fontFamily = MiFuenteFamilia)
-                    Text("Caducidad: $fechaCaducidad", fontFamily = MiFuenteFamilia)
-                    Text("CVC: ***", fontFamily = MiFuenteFamilia)
+                    Text("${stringResource(R.string.numero)}$tarjetaOculta",
+                        fontFamily = MiFuenteFamilia)
+
+                    Text("${stringResource(R.string.caducidad_resumen)} $fechaCaducidad", fontFamily = MiFuenteFamilia)
+                    Text("${stringResource(R.string.cvc)} "+": ***", fontFamily = MiFuenteFamilia)
                 }
             }
 
@@ -142,7 +174,10 @@ fun ResumenPago(
                 BotonEnviarPago(
                     onClick = {
                         viewModel.registrarPedidoActual()
-                        enviarCorreo = true }
+                        onBotonEnviarPulsado("Inicio")
+                        //enviarCorreo = true
+
+                }
                 )
             }
 
@@ -178,16 +213,16 @@ fun ResumenPago(
             if (mostrarDialogo) {
                 AlertDialog(
                     onDismissRequest = { mostrarDialogo = false },
-                    title = { Text("Pago realizado",
+                    title = { Text(stringResource(R.string.pago_hecho),
                         fontFamily = MiFuenteFamilia) },
-                    text = { Text("Tu pago se ha completado con éxito.",
+                    text = { Text(stringResource(R.string.pago_exito),
                         fontFamily = MiFuenteFamilia) },
                     confirmButton = {
                         Button(onClick = {
                             mostrarDialogo = false
                             onBotonAceptarResumenPagoPulsado("Inicio")
                         }) {
-                            Text("Aceptar",
+                            Text(stringResource(R.string.btn_aceptar),
                                 fontFamily = MiFuenteFamilia)
                         }
                     }

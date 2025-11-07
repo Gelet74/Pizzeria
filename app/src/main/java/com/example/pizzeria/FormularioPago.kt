@@ -46,13 +46,14 @@ fun FormularioPago(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Método de Pago",
+                text = stringResource(R.string.pago_form_title),
                 style = MaterialTheme.typography.headlineLarge,
                 fontFamily = MiFuenteFamilia,
                 modifier = Modifier.padding(bottom = 24.dp, top = 8.dp)
             )
 
-            Text("Selecciona tu tarjeta",
+            Text(
+                text = stringResource(R.string.tipo_tarj),
                 fontFamily = MiFuenteFamilia,
                 style = MaterialTheme.typography.titleMedium)
 
@@ -97,14 +98,13 @@ fun FormularioPago(
                 onValueChange = viewModel::actualizarNumeroTarjeta,
                 label = {
                     Text(
-                        "Número de Tarjeta",
+                        stringResource(R.string.numero_tarjeta),
                         fontFamily = MiFuenteFamilia
                     )
                 },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
-
 
             Spacer(Modifier.height(16.dp))
 
@@ -114,7 +114,7 @@ fun FormularioPago(
                     onValueChange = viewModel::actualizarFechaCaducidad,
                     label = {
                         Text(
-                            "Caducidad (MM/AA)",
+                            stringResource(R.string.caducidad),
                             fontFamily = MiFuenteFamilia
                         )
                     },
@@ -135,21 +135,17 @@ fun FormularioPago(
                                 Text("Aceptar")
                             }
                         },
-                        title = { Text("Fecha no válida") },
-                        text = {
-                            Text("Usa un mes entre 01 y 12 y un año igual o mayor a 2025.")
-                        }
+                        title = { Text(stringResource(R.string.fecha_erronea)) },
+                        text = { Text(stringResource(R.string.mensaje)) }
+
                     )
                 }
-
-
-
                 Spacer(Modifier.width(8.dp))
 
                 OutlinedTextField(
                     value = cvc,
                     onValueChange = viewModel::actualizarCvc,
-                    label = { Text("CVC",
+                    label = { Text(stringResource(R.string.cvc),
                         fontFamily = MiFuenteFamilia) },
                     keyboardOptions = KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.NumberPassword),
                     modifier = Modifier.weight(1f)
@@ -166,8 +162,6 @@ fun FormularioPago(
                 BotonResumenPago(onClick = { onBotonResumenPagoPulsado("Resumen Pago") })
 
             }
-
-
             }
         }
     }

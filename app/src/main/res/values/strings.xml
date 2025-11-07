@@ -27,7 +27,7 @@
     <string name="btn_aceptar">Aceptar</string>
     <string name="btn_enviar">Enviar</string>
     <string name="resumen_title">Resumen del Pedido</string>
-    <string name="label_tamano">Tamaño</string>
+    <string name="label_tamano">Tamaño:</string>
     <string name="label_cantidad">Cantidad de pizzas:</string>
     <string name="label_opcion">Opción:</string>
     <string name="pago_form_title">Formulario de Pago</string>
@@ -45,8 +45,20 @@
     <string name="atras">Atras</string>
     <string name="Haz_pedido">Haz Tu Pedido!!!</string>
     <string name="resumen_de_pedidos">Resumen de Pedidos</string>
-    <string name="pedido">Pedido #%1$d: %2$s</string>
+    <string name="pedido">Pedido #%1$d</string>
     <string name="bebida">Bebida: </string>
     <string name ="cantidad_resumen">Cantidad: </string>
     <string name="opciones_para">Opciones para</string>
+    <string name="numero_tarjeta">Número de Tarjeta</string>
+    <string name="caducidad">Caducidad (MM/AA)</string>
+    <string name="cvc">CVC</string>
+    <string name="fecha_erronea">Fecha no válida</string>
+    <string name="mensaje">Usa un mes entre 01 y 12 y un año igual o mayor a 2025</string>
+    <string name="metodo_pago">Método de pago</string>
+    <string name="numero">Número:</string>
+    <string name="caducidad_resumen">Caducidad:</string>
+    <string name="pago_hecho">Pago Realizado</string>
+    <string name="pago_exito">Tu pago se ha completado con éxito</string>
+    <string name="pedido_resumen">Pedido</string>
+
 </resources>

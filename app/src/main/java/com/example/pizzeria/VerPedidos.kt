@@ -49,7 +49,6 @@ fun Verpedidos(
                     PedidoTarjetaExpandible(pedido = pedido)
                 }
             }
-
            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = onBotonInicioVerPedidosPulsado,
@@ -72,9 +71,9 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
     var expandido by remember { mutableStateOf(false) }
 
    val pizzaTraducida = when (pedido.pizza) {
-        "Romana" -> stringResource(R.string.pizza1)
-        "Barbacoa" -> stringResource(R.string.pizza2)
-        "Margarita" -> stringResource(R.string.pizza3)
+        "romana" -> stringResource(R.string.pizza1)
+        "barbacoa" -> stringResource(R.string.pizza2)
+        "margarita" -> stringResource(R.string.pizza3)
         else -> pedido.pizza
     }
 
@@ -103,9 +102,6 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
         "Sin piña y no vegana" ->stringResource(R.string.opcion_sin_pina_no_vegana)
         else -> pedido.opcionPizza
     }
-
-
-
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -124,6 +120,11 @@ fun PedidoTarjetaExpandible(pedido: Pedido, modifier: Modifier = Modifier) {
                 Column {
                     Text(
                         text = stringResource(R.string.pedido, pedido.idpedido, pizzaTraducida),
+                        fontFamily = MiFuenteFamilia,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "Pizza: $pizzaTraducida",
                         fontFamily = MiFuenteFamilia,
                         style = MaterialTheme.typography.titleMedium
                     )

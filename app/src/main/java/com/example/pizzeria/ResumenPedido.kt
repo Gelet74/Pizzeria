@@ -66,20 +66,34 @@ fun ResumenPedido(
                 fontFamily = MiFuenteFamilia,
                 )
 
-
             Card(modifier = Modifier.fillMaxWidth()) {
                 Row(modifier = Modifier.padding(8.dp)) {
                     Column(modifier = Modifier.padding(4.dp)) {
                         Text(
-                            text= "Pizza: ${uiState.pizzaSeleccionada}",
+                            text = "Pizza: ${
+                                when (uiState.pizzaSeleccionada?.lowercase()) {
+                                    "romana" -> stringResource(R.string.pizza1)
+                                    "barbacoa" -> stringResource(R.string.pizza2)
+                                    "margarita" -> stringResource(R.string.pizza3)
+                                    else -> uiState.pizzaSeleccionada ?: ""
+                                }
+                            }",
                             fontFamily = MiFuenteFamilia,
                             style = MaterialTheme.typography.headlineSmall
                         )
                         Text(
-                            "${stringResource(R.string.label_tamano)} ${uiState.tamanoSeleccionado}",
+                            "${stringResource(R.string.label_tamano)} ${
+                                when (uiState.tamanoSeleccionado?.lowercase()) {
+                                    "pequeña" -> stringResource(R.string.tamano_pequena)
+                                    "mediana" -> stringResource(R.string.tamano_mediana)
+                                    "grande" -> stringResource(R.string.tamano_grande)
+                                    else -> uiState.tamanoSeleccionado ?: ""
+                                }
+                            }",
                             fontFamily = MiFuenteFamilia,
                             style = MaterialTheme.typography.headlineSmall
                         )
+
                         Text(
                             "${stringResource(R.string.cantidad_resumen)} ${uiState.cantidadPizza}",
                             fontFamily = MiFuenteFamilia,
@@ -120,10 +134,6 @@ fun ResumenPedido(
                             modifier = Modifier.size(180.dp)
                         )
                     }
-
-
-
-
                 }
             }
             Spacer(modifier = Modifier.height(4.dp))
@@ -132,7 +142,15 @@ fun ResumenPedido(
                 Row {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            "${stringResource(R.string.bebida)} ${uiState.bebidaSeleccionada}",
+                            "${stringResource(R.string.bebida)} ${
+                                when (uiState.bebidaSeleccionada?.lowercase()) {
+                                    "agua" -> stringResource(R.string.bebida1)
+                                    "cola" -> stringResource(R.string.bebida2)
+                                    "sin bebida" -> stringResource(R.string.bebida3)
+                                    else -> uiState.bebidaSeleccionada ?: ""
+                                }
+                            }",
+                            fontFamily = MiFuenteFamilia,
                             style = MaterialTheme.typography.headlineSmall
                         )
                         Text(

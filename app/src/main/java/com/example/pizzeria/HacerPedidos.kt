@@ -25,7 +25,7 @@ fun HacerPedido(
     viewModel: PizzeriaViewModel = viewModel(),
     modifier: Modifier = Modifier,
     onBotonInicioPulsado: (String) -> Unit,
-    onBotonResumenPedidoPulsado: (String) -> Unit,
+    onBotonResumenPedidoPulsado: (String) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var pizzaSeleccionada by remember { mutableStateOf("") }
@@ -291,8 +291,21 @@ fun HacerPedido(
                             .padding(vertical = 4.dp)
                     ) {
                         Column {
-                            Text(nombreBebida, fontFamily = MiFuenteFamilia, color = Color.White)
-                            Text("(${precioBebida} €)", fontFamily = MiFuenteFamilia, color = Color.White)
+                            Text(
+                                text = nombreBebida,
+                                fontFamily = MiFuenteFamilia,
+                                color = Color.White
+                            )
+
+                            if (!clave.equals("sin bebida", ignoreCase = true) &&
+                                !clave.equals("no drink", ignoreCase = true)
+                           ) {
+                                Text(
+                                    text = "(${precioBebida} €)",
+                                    fontFamily = MiFuenteFamilia,
+                                    color = Color.White
+                                )
+                            }
                         }
                     }
                 }
@@ -312,18 +325,25 @@ fun HacerPedido(
             ) {
                 Button(
                     onClick = { viewModel.cambiarCantidadBebida(-1) },
-                    colors = ButtonDefaults.buttonColors(containerColor = primaryLight)
+                    colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
+                    enabled =!( uiState.bebidaSeleccionada.equals("Sin bebida",ignoreCase = true) ||
+                            uiState.bebidaSeleccionada.equals("No drink" , ignoreCase = true))
                 ) {
                     Text("-", fontFamily = MiFuenteFamilia, color = Color.White)
                 }
 
                 Spacer(Modifier.width(8.dp))
-                Text(uiState.cantidadBebida.toString(), fontFamily = MiFuenteFamilia, style = MaterialTheme.typography.titleMedium)
+                Text(uiState.cantidadBebida.toString(),
+
+                    fontFamily = MiFuenteFamilia,
+                    style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.width(8.dp))
 
                 Button(
                     onClick = { viewModel.cambiarCantidadBebida(1) },
-                    colors = ButtonDefaults.buttonColors(containerColor = primaryLight)
+                    colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
+                    enabled =!( uiState.bebidaSeleccionada.equals("Sin bebida",ignoreCase = true) ||
+                    uiState.bebidaSeleccionada.equals("No drink" , ignoreCase = true))
                 ) {
                     Text("+", fontFamily = MiFuenteFamilia, color = Color.White)
                 }

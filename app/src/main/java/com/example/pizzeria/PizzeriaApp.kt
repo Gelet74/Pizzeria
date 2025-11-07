@@ -71,7 +71,7 @@ fun PizzeriaApp(
                         navController.navigate(Pantallas.HacerPedido.name)
                     },
                     onBotonResumenPulsado = {
-                        navController.navigate(Pantallas.VerPedidos.name)
+                       navController.navigate(Pantallas.VerPedidos.name)
                     }
                 )
             }

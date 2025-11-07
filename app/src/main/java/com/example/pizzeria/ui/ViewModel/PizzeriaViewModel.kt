@@ -61,7 +61,7 @@ class PizzeriaViewModel : ViewModel() {
         _uiState.update { current ->
             current.copy(
                 bebidaSeleccionada = nombreBebida,
-                cantidadBebida = if (nombreBebida == "Sin bebida") 0 else 1
+                cantidadBebida = if (nombreBebida == "Sin bebida") 1 else 0
             )
         }
         calcularPrecioTotal()

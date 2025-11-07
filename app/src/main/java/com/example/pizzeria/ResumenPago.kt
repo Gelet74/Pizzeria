@@ -185,7 +185,7 @@ fun ResumenPago(
                 Intent(Intent.ACTION_SEND).apply {
                     // The intent does not have a URI, so declare the "text/plain" MIME type
                     type = "text/plain"
-                    putExtra(Intent.EXTRA_EMAIL, arrayOf("jan@example.com"))
+                    putExtra(Intent.EXTRA_EMAIL, arrayOf(stringResource(R.string.correo)))
                     putExtra(Intent.EXTRA_SUBJECT, "Email subject")
                     putExtra(Intent.EXTRA_TEXT, "Email message text")
                     putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"))

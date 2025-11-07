@@ -45,8 +45,7 @@ fun Inicio(
                 contentScale = ContentScale.Fit,
                 alpha = 0.8f,
                 modifier = Modifier.fillMaxWidth()
-                    //.height(200.dp)
-                    .padding(top = 120.dp)
+                                   .padding(top = 120.dp)
             )
             Card(
                 modifier = Modifier

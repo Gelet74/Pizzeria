@@ -20,3 +20,7 @@ data class PizzeriaUIState(
     val precioBebida: Double = 0.0,
     val tipoTarjeta: String = ""
 )
+
+
+
+

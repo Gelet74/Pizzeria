@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.pizzeria.modelo.Pedido
 import com.example.pizzeria.ui.ViewModel.PizzeriaViewModel
 import com.example.pizzeria.ui.theme.MiFuenteFamilia
 import com.example.pizzeria.ui.theme.onPrimaryLight

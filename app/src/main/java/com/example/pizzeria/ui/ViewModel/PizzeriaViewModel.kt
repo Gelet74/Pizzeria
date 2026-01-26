@@ -27,7 +27,7 @@ class PizzeriaViewModel : ViewModel() {
     val pedidos: StateFlow<List<Pedido>> = _pedidos.asStateFlow()
 
     private val _fechaValida = MutableStateFlow(true)
-    val fechaValida: StateFlow<Boolean> = _fechaValida.asStateFlow()
+
 
 
     init {
@@ -194,18 +194,6 @@ class PizzeriaViewModel : ViewModel() {
 
         validarCampos()
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     fun actualizarCvc(valor: String) {
         if (valor.length <= 3 && valor.all { it.isDigit() }) {

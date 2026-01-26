@@ -60,4 +60,5 @@
     <string name="pago_hecho">Payment Made</string>
     <string name="pago_exito">Your payment has been completed successfully</string>
     <string name="pedido_resumen">Order</string>
+    <string name="label_carrito">Add to cart</string>
 </resources>

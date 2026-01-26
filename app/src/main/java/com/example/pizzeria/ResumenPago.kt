@@ -16,13 +16,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import android.net.Uri
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.pizzeria.modelo.PizzeriaUIState
 import com.example.pizzeria.ui.ViewModel.PizzeriaViewModel
 import com.example.pizzeria.ui.theme.MiFuenteFamilia
 
@@ -37,10 +38,10 @@ fun ResumenPago(
     val fechaCaducidad by viewModel.fechaCaducidad.collectAsState()
     val cvc by viewModel.cvc.collectAsState()
     val uiState by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
 
     var mostrarDialogo by remember { mutableStateOf(false) }
-    var enviarCorreo by remember { mutableStateOf(false) }
-
+    var mostrarDialogoCorreo by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -62,16 +63,17 @@ fun ResumenPago(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = Color.White),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(stringResource(R.string.pedido_resumen),
+                    Text(
+                        stringResource(R.string.pedido_resumen),
                         fontFamily = MiFuenteFamilia,
-                        style = MaterialTheme.typography.headlineSmall)
+                        style = MaterialTheme.typography.headlineSmall
+                    )
 
                     Text(
                         text = "Pizza: ${
@@ -95,17 +97,25 @@ fun ResumenPago(
                         }",
                         fontFamily = MiFuenteFamilia
                     )
-                    Text("${stringResource(R.string.label_cantidad)} ${uiState.cantidadPizza}",
-                             fontFamily = MiFuenteFamilia)
-                    Text("${stringResource(R.string.bebida)}${
-                        when (uiState.bebidaSeleccionada?.lowercase()) {
-                            "agua" -> stringResource(R.string.bebida1)
-                            "cola" -> stringResource(R.string.bebida2)
-                            "sin bebida" -> stringResource(R.string.bebida3)
-                            else -> uiState.bebidaSeleccionada ?: " "
-                        }   }",
-                        fontFamily = MiFuenteFamilia)
-                    Text("${stringResource(R.string.label_cantidad_bebidas)} ${uiState.cantidadBebida}", fontFamily = MiFuenteFamilia)
+                    Text(
+                        "${stringResource(R.string.label_cantidad)} ${uiState.cantidadPizza}",
+                        fontFamily = MiFuenteFamilia
+                    )
+                    Text(
+                        "${stringResource(R.string.bebida)}${
+                            when (uiState.bebidaSeleccionada?.lowercase()) {
+                                "agua" -> stringResource(R.string.bebida1)
+                                "cola" -> stringResource(R.string.bebida2)
+                                "sin bebida" -> stringResource(R.string.bebida3)
+                                else -> uiState.bebidaSeleccionada ?: " "
+                            }
+                        }",
+                        fontFamily = MiFuenteFamilia
+                    )
+                    Text(
+                        "${stringResource(R.string.label_cantidad_bebidas)} ${uiState.cantidadBebida}",
+                        fontFamily = MiFuenteFamilia
+                    )
                 }
             }
 
@@ -117,8 +127,11 @@ fun ResumenPago(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(stringResource(R.string.metodo_pago),
-                        fontFamily = MiFuenteFamilia, style = MaterialTheme.typography.headlineSmall)
+                    Text(
+                        stringResource(R.string.metodo_pago),
+                        fontFamily = MiFuenteFamilia,
+                        style = MaterialTheme.typography.headlineSmall
+                    )
 
                     if (tipoPago != null) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -139,16 +152,23 @@ fun ResumenPago(
                         if (numeroTarjeta.length >= 4) "**** **** **** ${numeroTarjeta.takeLast(4)}"
                         else "**** **** **** ****"
 
-                    Text("${stringResource(R.string.numero)}$tarjetaOculta",
-                        fontFamily = MiFuenteFamilia)
+                    Text(
+                        "${stringResource(R.string.numero)}$tarjetaOculta",
+                        fontFamily = MiFuenteFamilia
+                    )
 
-                    Text("${stringResource(R.string.caducidad_resumen)} $fechaCaducidad", fontFamily = MiFuenteFamilia)
-                    Text("${stringResource(R.string.cvc)} "+": ***", fontFamily = MiFuenteFamilia)
+                    Text(
+                        "${stringResource(R.string.caducidad_resumen)} $fechaCaducidad",
+                        fontFamily = MiFuenteFamilia
+                    )
+                    Text(
+                        "${stringResource(R.string.cvc)} : ***",
+                        fontFamily = MiFuenteFamilia
+                    )
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-
 
             Text(
                 text = "TOTAL: ${"%.2f".format(uiState.precioTotal)} €",
@@ -174,56 +194,65 @@ fun ResumenPago(
                 BotonEnviarPago(
                     onClick = {
                         viewModel.registrarPedidoActual()
-                        onBotonEnviarPulsado("Inicio")
-                        //enviarCorreo = true
-
-                }
-                )
-            }
-
-            /*if (enviarCorreo) {
-                Intent(Intent.ACTION_SEND).apply {
-                    // The intent does not have a URI, so declare the "text/plain" MIME type
-                    type = "text/plain"
-                    putExtra(Intent.EXTRA_EMAIL, arrayOf(stringResource(R.string.correo)))
-                    putExtra(Intent.EXTRA_SUBJECT, "Email subject")
-                    putExtra(Intent.EXTRA_TEXT, "Email message text")
-                    putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"))
-                    // You can also attach multiple items by passing an ArrayList of Uris
-                }
-                   AlertDialog(
-                    onDismissRequest = { enviarCorreo= false },
-                    title = { Text("Correo enviado", fontFamily = MiFuenteFamilia) },
-                    text = { Text("Tu correo se ha enviado con éxito.",
-                        fontFamily = MiFuenteFamilia) },
-                    confirmButton = {
-                        Button(onClick = {
-                            mostrarDialogo = false
-                            onBotonEnviarPagoPulsado("Inicio")
-                        }) {
-                            Text("Aceptar",
-                                fontFamily = MiFuenteFamilia)
-                        }
+                        enviarCorreo(context, uiState)
                     }
                 )
-
-            }*/
+            }
 
 
             if (mostrarDialogo) {
                 AlertDialog(
                     onDismissRequest = { mostrarDialogo = false },
-                    title = { Text(stringResource(R.string.pago_hecho),
-                        fontFamily = MiFuenteFamilia) },
-                    text = { Text(stringResource(R.string.pago_exito),
-                        fontFamily = MiFuenteFamilia) },
+                    title = {
+                        Text(
+                            stringResource(R.string.pago_hecho),
+                            fontFamily = MiFuenteFamilia
+                        )
+                    },
+                    text = {
+                        Text(
+                            stringResource(R.string.pago_exito),
+                            fontFamily = MiFuenteFamilia
+                        )
+                    },
                     confirmButton = {
                         Button(onClick = {
                             mostrarDialogo = false
                             onBotonAceptarResumenPagoPulsado("Inicio")
                         }) {
-                            Text(stringResource(R.string.btn_aceptar),
-                                fontFamily = MiFuenteFamilia)
+                            Text(
+                                stringResource(R.string.btn_aceptar),
+                                fontFamily = MiFuenteFamilia
+                            )
+                        }
+                    }
+                )
+            }
+
+            if (mostrarDialogoCorreo) {
+                AlertDialog(
+                    onDismissRequest = { mostrarDialogoCorreo = false },
+                    title = {
+                        Text(
+                            "Correo enviado",
+                            fontFamily = MiFuenteFamilia
+                        )
+                    },
+                    text = {
+                        Text(
+                            "Tu pedido se ha enviado por correo con éxito.",
+                            fontFamily = MiFuenteFamilia
+                        )
+                    },
+                    confirmButton = {
+                        Button(onClick = {
+                            mostrarDialogoCorreo = false
+                            onBotonEnviarPulsado("Inicio")
+                        }) {
+                            Text(
+                                "Aceptar",
+                                fontFamily = MiFuenteFamilia
+                            )
                         }
                     }
                 )
@@ -231,6 +260,27 @@ fun ResumenPago(
         }
     }
 }
+
+private fun enviarCorreo(context: android.content.Context, uiState: PizzeriaUIState) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "message/rfc822"
+        putExtra(Intent.EXTRA_EMAIL, arrayOf("cliente@ejemplo.com"))
+        putExtra(Intent.EXTRA_SUBJECT, "Confirmación de Pedido - Pizzería")
+
+    }
+
+    try {
+        context.startActivity(Intent.createChooser(intent, "Enviar correo..."))
+
+    } catch (e: Exception) {
+        android.widget.Toast.makeText(
+            context,
+            "No se encontró una aplicación de correo",
+            android.widget.Toast.LENGTH_LONG
+        ).show()
+    }
+}
+
 @Composable
 fun BotonEnviarPago(
     onClick: () -> Unit,
@@ -246,6 +296,7 @@ fun BotonEnviarPago(
         )
     }
 }
+
 @Composable
 fun BotonAceptarResumenPago(
     onClick: () -> Unit,
@@ -261,5 +312,3 @@ fun BotonAceptarResumenPago(
         )
     }
 }
-
-
